@@ -15,6 +15,7 @@ NEWSPIDER_MODULE = "bookscraper.spiders"
 FEEDS = {
     "data.json" : {"format" : "json"}
 }
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
 
