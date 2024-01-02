@@ -1,5 +1,6 @@
 import scrapy
 from bookscraper.items import BookItem  
+import random
 
 class BookspiderSpider(scrapy.Spider):
     name = 'bookspider'
@@ -11,6 +12,14 @@ class BookspiderSpider(scrapy.Spider):
             "booksdata.json" : {"format" : "json", "overwrite" : True},
         }
     }
+
+    user_agent_list = [
+        "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36",
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21"
+    ]
     def parse(self, response):
         books = response.css('article.product_pod')
         for book in books:
